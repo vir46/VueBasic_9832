@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guided 1</title>
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h2>Halo, aku {{ wanita.nama }}</h2>
+            <p>
+                umurku {{ wanita.umur }} tahun dan aku bekerja
+                sebagai seorang {{ wanita.pekerjaan}}.
+                <br>
+                Aku <span v-if="wanita.status == 'menikah'">
+                    Sudah menikah.
+                </span>
+                <span v-else-if="wanita.status == 'belum menikah'">
+                    masih lajang hehe
+                </span>
+                <span v-else="wanita.status == 'tidak pasti'">
+                    dalam hubungan yang rumit
+                </span>
+            </p>
+
+            <div>
+                <button @click="kurangiUmur">Kurangi umurku</button>
+                <button @click="tambahUmur">Tambah umurku</button>
+            </div>
+
+            <p v-show="wanita.skills">Kemampuanku adalah :</p>
+            <ul v-for="(skill, index) in wanita.skills" :key="index">
+                <li>{{skill}}</li>
+            </ul>
+        </div>
+    </body>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                wanita: {
+                    nama: 'Karen',
+                    umur: 20,
+                    pekerjaan: 'programmer',
+                    skills: [
+                        'mencuci piring',
+                        'coding'
+                    ],
+                    status: 'tidak pasti',
+                }
+            },
+            methods: {
+                tambahUmur(){
+                    this.wanita.umur++;
+                },
+                kurangiUmur(){
+                    this.wanita.umur--;
+                },
+            },
+        });
+    </script>
+</html>
