@@ -28,7 +28,6 @@
                 <button @click="kurangiUmur">Kurangi umurku</button>
                 <button @click="tambahUmur">Tambah umurku</button>
             </div>
-
             <p v-show="wanita.skills">Kemampuanku adalah :</p>
             <ul v-for="(skill, index) in wanita.skills" :key="index">
                 <li>{{skill}}</li>
